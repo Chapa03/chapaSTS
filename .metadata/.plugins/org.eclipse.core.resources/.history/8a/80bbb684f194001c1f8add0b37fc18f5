@@ -1,0 +1,71 @@
+<div class="container">
+	<div class="row m-3">
+		<h2 class="display-4"><i class="bi bi-people"></i> Personas</h2>
+	</div>
+</div>
+
+<div class="container bg-primary rounded p-4">
+	
+	<div class="row m-3">
+		<h3 class="display-5 text-light">Lista de personas</h3>
+	</div>
+	
+	<table class="table table-hover">
+	<thead>
+	  
+		    <tr class="table-active">
+				<th scope="col" class="text-light">
+					Nombre de la persona
+				</th>
+				<th scope="col" class="text-light">
+					Nació en (Nº nativos)
+				</th>
+				<th scope="col" class="text-light">
+					Vive en (Nº residentes)
+				</th>
+				<th scope="col" class="text-light">
+					Le gusta
+				</th>
+				<th>
+					<div class="d-flex justify-content-end">
+						<form action="/persona/c">
+							<input type="submit" class="btn btn-success btn-sm" value="Nueva persona"/>
+							<label class="text-light mx-3">Acciones</label>
+						</form>
+					</div>
+				</th>
+		    </tr>
+	    
+	  </thead>
+	  <tbody>
+	  
+		    <tr>
+				<tr th:each="persona:${personas}" class="text-light">
+					<td th:text="${persona.nombre}" />
+					<!--Lo que está entre pipes se concatena-->
+					<td th:text="|${persona.nace.nombre} (${persona.nace.nativos.size()})|"/>
+					<td th:text="|${persona.reside.nombre} (${persona.reside.residentes.size()})|"/>
+					
+					<td>
+						<span th:each="aficion:${persona.aficionesGusta}" th:text="|· ${aficion.descripcion} |">
+						</span>
+					</td>
+					
+					<td class="d-flex justify-content-end pe-3">
+						<form action="/persona/u">
+							<button title="Editar persona" onclick="submit" class="btn btn-sm btn-primary">
+								<img src="/img/edit.svg" height="20" width="20">
+								<input type="hidden" name="idPersona" th:value="${persona.id}" />
+							</button>
+						</form>
+					</td>
+					
+				</tr>
+		    </tr>
+	    
+		</tbody>
+	</table>
+	<br/>
+</div>
+
+

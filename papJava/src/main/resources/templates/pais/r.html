@@ -17,10 +17,17 @@
 				<th scope="col" class="text-light">
 					Nombre del país
 				</th>
+				<th scope="col" class="text-light">
+					Nativos
+				</th>
+				<th scope="col" class="text-light">
+					Residentes
+				</th>
 				<th>
 					<div class="d-flex justify-content-end">
 						<form action="/pais/c">
 							<input type="submit" class="btn btn-success btn-sm" value="Nuevo país"/>
+							<label class="text-light mx-3">Acciones</label>
 						</form>
 					</div>
 				</th>
@@ -34,7 +41,21 @@
 				<!--Se recorre con Thymeleaf:each el ModelMap que llega del controlador con 'paises'
 				y se extrae de cada uno los atributos necesarios-->
 				<tr th:each="pais:${paises}" class="text-light">
-					<td th:text="${pais.nombre}" colspan="2"/>
+					<td th:text="${pais.nombre}"/>
+					<td>
+						<span th:each="persona:${pais.nativos}" th:text="|· ${persona.nombre} |"></span>
+					</td>
+					<td>
+						<span th:each="persona:${pais.residentes}" th:text="|· ${persona.nombre} |"></span>
+					</td>
+					<td class="d-flex justify-content-end pe-3">
+						<form action="/pais/u">
+							<button title="Editar país" onclick="submit" class="btn btn-sm btn-primary">
+								<img src="/img/edit.svg" height="20" width="20">
+								<input type="hidden" name="idPais" th:value="${pais.id}" />
+							</button>
+						</form>
+					</td>
 				</tr>
 		    </tr>
 	    

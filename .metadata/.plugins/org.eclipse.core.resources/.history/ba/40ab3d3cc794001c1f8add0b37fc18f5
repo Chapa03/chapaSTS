@@ -1,0 +1,51 @@
+<div class="container">
+	<div class="row m-3">
+		<h2 class="display-4"><i class="bi bi-people"></i> Personas</h2>
+	</div>
+</div>	
+
+<div class="container bg-primary rounded p-4">
+	
+	<div class="row m-3">
+		<h3 class="display-5 text-light">Crear nueva persona</h3>
+	</div>
+	
+	<form action="/persona/c" method="POST">
+		<div class="form-group mb-3">
+			<label for="idNombre" class="form-label text-light disabled">Nombre</label>
+			<input type="text" class="form-control" name="nombre" id="idNombre" placeholder="John Connor" autofocus="autofocus">
+		</div>
+		
+		<div class="form-group mb-3">
+			<label for="idPassword" class="form-label text-light disabled">Contraseña</label>
+			<input type="password" class="form-control" name="password" id="idPassword" placeholder="Contraseña"/>
+		</div>
+		
+		<div class="form-group mb-3">
+			<label for="paises" class="form-label text-light disabled">Selecciona el país de nacimiento</label>
+			<select class="form-select" id="paises" name="idPaisNace" aria-label="Default select example">
+			  	<option selected>Elige un país de la lista</option>
+			  	<option th:each="pais:${paises}" th:text="${pais.nombre}" th:value="${pais.id}"></option>
+			</select>
+		</div>
+		
+		<div class="form-group mb-3">
+			<label class="form-label text-dark disabled">Elige las aficiones que te gustan:</label>
+			<div class="form-check bg-light rounded">
+				<div th:each="aficion:${aficiones}" class="m">
+					<input  th:id="|id-${aficion.id}|" name="idAficion[]" th:value="${aficion.id}" class="form-check-input" type="checkbox" id="flexCheckDefault">
+					<label th:for="|id-${aficion.id}|" th:text="${aficion.descripcion}" class="form-check-label" for="flexCheckDefault">
+				    	
+					</label>
+				</div>
+			</div>
+		</div>
+		
+		<div class="d-flex justify-content-end m-3">
+			<input type="submit" class="btn btn-light m-2" value="Dar de alta"/>
+			<a href="/persona/r" class="btn btn-secondary m-2">Cancelar</a>
+		</div>
+		
+	</form>
+	
+</div>
