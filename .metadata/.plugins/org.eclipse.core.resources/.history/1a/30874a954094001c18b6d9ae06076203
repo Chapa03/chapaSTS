@@ -1,0 +1,5 @@
+package org.chapa.papJava.exception;
+
+public class DangerException extends Exception{
+
+}

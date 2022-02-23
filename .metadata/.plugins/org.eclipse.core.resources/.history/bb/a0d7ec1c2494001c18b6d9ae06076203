@@ -1,0 +1,5 @@
+package org.chapa.papJava.entities;
+
+public class Pais {
+
+}

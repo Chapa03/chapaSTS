@@ -1,0 +1,15 @@
+package org.chapa.papJava;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration;
+
+@SpringBootApplication(exclude = { SecurityAutoConfiguration.class })
+public class PapJavaApplication {
+
+	public static void main(String[] args) {
+		//MAIN que deja la ejecución del aplicación en manos de Spring
+		SpringApplication.run(PapJavaApplication.class, args);
+	}
+
+}

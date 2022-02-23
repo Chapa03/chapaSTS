@@ -1,0 +1,13 @@
+package org.chapa.papJava;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+@SpringBootApplication
+public class PapJavaApplication {
+
+	public static void main(String[] args) {
+		SpringApplication.run(PapJavaApplication.class, args);
+	}
+
+}

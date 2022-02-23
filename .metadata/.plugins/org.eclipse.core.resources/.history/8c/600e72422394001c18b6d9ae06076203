@@ -1,0 +1,5 @@
+package org.chapa.papJava.controller;
+
+public class ErrorController {
+
+}

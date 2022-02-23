@@ -1,0 +1,7 @@
+package org.chapa.papJava.repository;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface AficionRepository extends JpaRepository<Aficion, Long>{
+
+}

@@ -1,0 +1,35 @@
+<div class="container">
+	<h4 th:class="|alert alert-${severity}|">
+		<span th:text="${mensaje}"></span>
+	</h4>
+
+	
+
+	<form th:action="${link}" method="get">
+		<input class="button" type="submit" value="Volver" autofocus="autofocus">
+	</form>
+</div>
+
+
+<div class="container">
+	<div class="row m-3">
+		<h2 class="display-4 text-secondary"><i class="bi bi-info-circle"></i> Error</h2>
+	</div>
+</div>	
+
+<div class="container bg-secondary text-light rounded p-4">
+	
+	<div class="row m-3">
+		<h3 th:class="|alert alert-${severity}|" class="display-5"><span th:text="${mensaje}"></span></h3>
+	</div>
+	
+	<form th:action="${link}" method="get">
+		<div class="mb-3 d-flex justify-content-end">
+			<label class="form-label">Por favor, vuelve al menú principal</label>
+		</div>
+		<div class="d-flex justify-content-end">
+			<input type="submit" class="btn btn-primary" value="Volver a Home" autofocus="autofocus"/>
+		</div>
+	</form>
+	
+</div>

@@ -1,0 +1,48 @@
+package org.chapa.papJava.controller;
+
+import javax.servlet.http.HttpSession;
+
+import org.chapa.papJava.entities.Persona;
+import org.chapa.papJava.repository.PersonaRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
+@Controller
+public class HomeController {
+	
+	@Autowired
+	private PersonaRepository personaRepository;
+	
+	@GetMapping("/login")
+	public String login(ModelMap m) {
+		m.put("view", "home/login");
+		return "_t/frame";
+	}
+	
+	@PostMapping("/login")
+	public String loginPost(
+			@RequestParam("nombre") String nombre,
+			@RequestParam("password") String password,
+			HttpSession s
+			) {
+		String returnLocation = "/";
+		//Bean de persona recuperado de la bbdd por el nombre
+		Persona persona = personaRepository.getByNombre(nombre);
+		//Si la contraseña introducida coincide con la de la base de datos
+		if (new BCryptPasswordEncoder().matches(password, persona.getPassword())) {
+			
+		}
+		return returnLocation;
+	}
+	
+	@GetMapping("/")
+	public String index(ModelMap m) {
+		m.put("view", "home/index");
+		return "_t/frame";
+	}
+}

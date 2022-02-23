@@ -1,0 +1,5 @@
+package org.chapa.papJava.repository;
+
+public interface PaisRepository {
+
+}
